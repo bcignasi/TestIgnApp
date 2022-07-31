@@ -54,6 +54,7 @@ public class Main {
     public static void executeOption(int option) throws Exception {
 
 
+        // TODO Quizás estaría bien comentar cada opción para no tener que ir a mirar al menú
         switch (option) {
             case 1 -> {
                 System.out.println();
@@ -88,6 +89,7 @@ public class Main {
                 Friend thatFriend = app.getFriend(inquiredFriend);
                 System.out.println("\n" + thatFriend.showData() + "\n");
             }
+            // TODO En este caso modificas cosas y no haces saveData()
             case 5 -> {
                 System.out.println("enter name of friend");
                 String selectedFriend = Input.getString();
@@ -127,6 +129,7 @@ public class Main {
         }
     }
 
+    // TODO Supongo que esta función debería formar parte de las opciones del switch, ahora mismo no se usa
     private static void updateTime() {
 
         if (today == null || today.compareTo(LocalDate.now()) < 0) {
@@ -145,6 +148,7 @@ public class Main {
 
         app.saveData();*/
 
+        // TODO Lo del fichero
         File f = new File("friendList.txt");
         if (f.isFile()) {
 
@@ -164,6 +168,10 @@ public class Main {
                 break;
             }
             executeOption(option);
+            /*
+            TODO Este saveData() es redundante dentro del while porque cada opción que modifica los datos
+                ejecuta otro saveData() allí. En cualquier, caso lo pondría fuera por asegurar al salir del programa
+             */
             app.saveData();
         }
 
@@ -171,4 +179,3 @@ public class Main {
     }
 
 }
-

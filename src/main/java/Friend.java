@@ -10,14 +10,22 @@ public class Friend {
     /**
      * date friend was first added
      */
+    /* TODO initDate no se usa. Puedes seguir los Usages para ver qué funciones la usan y
+        qué funciones usan estas funciones, hasta que tengas el árbol completo. Entonces
+        decides si es algo a medio hacer o algo que se puede descartar por completo.
+        Si decides borrarlo, elimina primero la variable, y luego que el compilador te dé
+        todos los errores para ir borrando sucesivamente
+     */
     private LocalDate initDate;
     /**
      * Next notification date
      */
     private LocalDate nextDate;
 
+    // TODO Documentar incDays, no uses estilo Javadoc con cosas private, porque no salen (en principio)
     private int incDays;
 
+    // TODO Borrar el Javadoc y volverlo a crear (porque ahora no muestra los cambios por incDays)
     /**
      * @param name creates instance af Friend with introduced name
      */
@@ -27,6 +35,7 @@ public class Friend {
         this.nextDate = LocalDate.now().plusDays(incDays);
     }
 
+    // TODO Javadoc del constructor
     public Friend(String name, LocalDate nextDate, int incDays) {
         setIncDays(incDays);
         setName(name);
@@ -45,10 +54,15 @@ public class Friend {
         return name;
     }
 
+    /*
+    TODO setName() debería validar y sanitizar la entrada:
+        quitar los espacios y verificar que contiene algo
+     */
     public void setName(String name) {
         this.name = name;
     }
 
+    // TODO Eliminar getInitdate(), no se usa en ningún lado
     public LocalDate getInitDate() {
         return initDate;
     }
@@ -60,13 +74,17 @@ public class Friend {
     /**
      * @return true if notification is needed.
      */
-
+    // TODO Eliminar checkDate() por estar en desuso. Cambiar Javadoc
     public boolean checkDate() {
 
         return (remainingDays() == 0);
 
     }
 
+    /* TODO: En el Javadoc, aparte de comentar el @return conviene poner
+        pequeña descripción al principio, ya que esto es lo que saldrá
+        primero en el listado de la documentación generada
+     */
     /**
      * @return true if nextDate needs to be updated to next week.
      */
@@ -75,6 +93,12 @@ public class Friend {
         return (remainingDays() <= -1);
     }
 
+    /*
+    TODO Aquí hay un problema de nomenclatura, esta función debería llamarse
+        setNextDateAuto() (por ejemplo), y la siguiente setNextDate() a secas
+        La razón es que la que hace la verdadera función de setter es la segunda,
+        esta primera es en realidad el mecanismo automático de actualización
+     */
     /**
      * Increases nextDate by 6 days. Check happens on -1 days, so in order to make it a full week we
      * only add 6 days.
@@ -82,11 +106,17 @@ public class Friend {
     public void setNextDate() {
 
         while (this.nextDate.compareTo(LocalDate.now()) < 0) {
-
+            /*
+            TODO Aquí se ha quedado un 7 olvidado (al pasar a incDays). Esto sirve para
+                recordar por qué no se usan números "sueltos" dentro del código, si hubieras
+                puesto private final int INC_DAYS = 7; arriba, al borrar esta constante todas
+                las referencias te habrían salido como errores y no se te hubiera pasado esta.
+             */
             this.nextDate = this.nextDate.plusDays(7);
         }
     }
 
+    // TODO Este es el verdadero setNextDate(), habría que intercambiar nombres con anterior
     public void setCustomNextDate(LocalDate customNextDate) throws Exception {
 
         if (customNextDate.isBefore(LocalDate.now())) {
@@ -159,6 +189,9 @@ public class Friend {
         return s;
     }
 
+    /*
+    TODO Falta una función showDataDetail() o así para presentar toda la info del usuario
+     */
 
     /**
      * @return number of days remaining until nextDate.
@@ -169,6 +202,7 @@ public class Friend {
 
     }
 
+    // TODO Eliminar todo este comentario con el main()
 /*
     public static void main(String args[]) {
 
