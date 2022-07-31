@@ -1,0 +1,8 @@
+/friendList.txt
+.idea/
+.gradle/
+build/
+gradle/
+gradlew
+gradlew.bat
+/.gradle/
