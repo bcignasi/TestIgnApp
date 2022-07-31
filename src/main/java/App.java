@@ -48,6 +48,10 @@ public class App {
             }
         }
 
+        /*
+        TODO Cambiar Exception por una excepción personalizada (AppException, por ejemplo),
+            para que el control de errores sea un poco más fino.
+        *  */
 
         throw new Exception("Not room for more friends :/");
 

@@ -2,6 +2,10 @@ import java.time.LocalDate;
 
 import static java.time.temporal.ChronoUnit.DAYS;
 
+/*
+TODO IMPORTANTE: añadir un método today() para ver de fijar la fecha para comparaciones
+    Esto es necesario para que los tests funcionen. Hay que discutirlo
+ */
 public class Friend {
     /**
      * Friends name
@@ -55,14 +59,14 @@ public class Friend {
     }
 
     /*
-    TODO setName() debería validar y sanitizar la entrada:
+    TODO setName() debería validar y sanear la entrada:
         quitar los espacios y verificar que contiene algo
      */
     public void setName(String name) {
         this.name = name;
     }
 
-    // TODO Eliminar getInitdate(), no se usa en ningún lado
+    // TODO Eliminar getInitDate(), no se usa en ningún lado
     public LocalDate getInitDate() {
         return initDate;
     }

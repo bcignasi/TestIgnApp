@@ -55,6 +55,7 @@ public class Main {
 
 
         // TODO Quizás estaría bien comentar cada opción para no tener que ir a mirar al menú
+        // TODO Otra opción sería encapsular el código de cada case en una función independiente
         switch (option) {
             case 1 -> {
                 System.out.println();
